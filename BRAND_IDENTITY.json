@@ -1,0 +1,115 @@
+{
+    "creative_name": "Shadow Sight",
+    "slogan": "Seeing through the digital fog of war.",
+    "sales_pitch": "Total informational dominance through 4-layer autonomous reconnaissance.",
+    "human_story": {
+        "what_it_is": {
+            "en": "Imagine a private investigator who works 24/7, knows exactly where to look on the internet, and delivers a full dossier — without you lifting a finger.",
+            "ua": "Уявіть детектива, що працює 24/7, знає де шукати і передає повне досьє — без вашої участі.",
+            "ru": "Представьте детектива, который работает 24/7, знает где искать и передаёт полное досье — без вашего участия."
+        },
+        "who_needs_it": {
+            "en": "Legal professionals, journalists, due-diligence analysts — anyone who needs the full picture on a person, company, or domain before making a decision.",
+            "ua": "Юристи, журналісти, аналітики — всім, кому потрібна повна картина перед прийняттям рішення.",
+            "ru": "Юристы, журналисты, аналитики — всем, кому нужна полная картина перед принятием решения."
+        },
+        "how_it_works": {
+            "en": "You give it a name, domain, or email. It searches 4 intelligence layers: technical footprint, social media, leaked databases, and official registries. Everything is packaged into one clean report.",
+            "ua": "Ви даєте ім'я або домен. Система шукає в 4 шарах: технічний слід, соцмережі, витоки, реєстри. Все в одному звіті.",
+            "ru": "Вы даёте имя или домен. Система ищет по 4 слоям: технический след, соцсети, утечки, реестры. Всё в одном отчёте."
+        },
+        "what_you_get": {
+            "en": "A structured intelligence report that would take a human investigator several days to compile — delivered automatically in minutes.",
+            "ua": "Структурований звіт, який слідчий збирав би кілька днів — автоматично за хвилини.",
+            "ru": "Структурированный отчёт, который следователь собирал бы несколько дней — автоматически за минуты."
+        }
+    },
+    "what_to_provide": {
+        "title": {
+            "en": "What you need to give the system",
+            "ua": "Що потрібно надати системі",
+            "ru": "Что нужно передать системе"
+        },
+        "items": {
+            "en": [
+                "Full name of a person  (e.g.  John Smith)",
+                "OR  company name  (e.g.  Acme Corp)",
+                "OR  domain / website  (e.g.  acmecorp.com)",
+                "OR  email address  (e.g.  john@acmecorp.com)",
+                "Optional: phone number, city, known aliases"
+            ],
+            "ua": [
+                "Повне ім'я особи  (напр.  Іваненко Олександр)",
+                "АБО  назва компанії  (напр.  Acme Corp)",
+                "АБО  домен / сайт  (напр.  acmecorp.com)",
+                "АБО  e-mail адреса  (напр.  john@acmecorp.com)",
+                "Опційно: номер телефону, місто, псевдоніми"
+            ],
+            "ru": [
+                "Полное имя человека  (напр.  Иваненко Александр)",
+                "ИЛИ  название компании  (напр.  Acme Corp)",
+                "ИЛИ  домен / сайт  (напр.  acmecorp.com)",
+                "ИЛИ  e-mail адрес  (напр.  john@acmecorp.com)",
+                "Опционально: номер телефона, город, псевдонимы"
+            ]
+        },
+        "note": {
+            "en": "The more data you provide — the deeper and more precise the report.",
+            "ua": "Чим більше даних надаєте — тим глибший і точніший звіт.",
+            "ru": "Чем больше данных — тем глубже и точнее отчёт."
+        }
+    },
+    "deployment": {
+        "where": {
+            "en": "Runs locally on your machine — no cloud, no subscriptions, no data leaves your computer.",
+            "ua": "Запускається локально на вашому комп'ютері — жодних хмар, дані не залишають вашу машину.",
+            "ru": "Запускается локально на вашем компьютере — никаких облаков, данные не покидают машину."
+        },
+        "requirements": [
+            "Python 3.10+",
+            "Windows / Linux / macOS",
+            "Internet connection (for reconnaissance)",
+            "4 GB RAM minimum"
+        ]
+    },
+    "tech_stack": {
+        "label": {
+            "en": "Open-source repositories powering this tool",
+            "ua": "Відкриті репозиторії, що складають цей інструмент",
+            "ru": "Открытые репозитории, составляющие этот инструмент"
+        },
+        "repos": [
+            {
+                "name": "Maigret",
+                "url": "github.com/soxoj/maigret",
+                "desc": "Username OSINT across 3000+ sites"
+            },
+            {
+                "name": "Holehe",
+                "url": "github.com/megadose/holehe",
+                "desc": "Email-to-accounts OSINT engine"
+            },
+            {
+                "name": "Sherlock",
+                "url": "github.com/sherlock-project/sherlock",
+                "desc": "Hunt social accounts by username"
+            },
+            {
+                "name": "TheHarvester",
+                "url": "github.com/laramies/theHarvester",
+                "desc": "Domain emails, subdomains & IPs"
+            },
+            {
+                "name": "SpiderFoot",
+                "url": "github.com/smicallef/spiderfoot",
+                "desc": "Automated OSINT reconnaissance"
+            },
+            {
+                "name": "Subfinder",
+                "url": "github.com/projectdiscovery/subfinder",
+                "desc": "Passive subdomain discovery"
+            }
+        ]
+    },
+    "agent_source": "14_WIKI_COPYWRITER_V2"
+}
