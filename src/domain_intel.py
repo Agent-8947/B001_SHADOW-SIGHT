@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""
-Domain Intelligence — Passive OSINT via Python stdlib.
-
-Usage:
-    python domain_intel.py subdomains example.com
-    python domain_intel.py ssl example.com
-    python domain_intel.py whois example.com
-    python domain_intel.py dns example.com
-    python domain_intel.py available example.com
-    python domain_intel.py bulk example.com github.com google.com --checks ssl,dns
-
-All output is structured JSON. No dependencies beyond Python stdlib.
-Works on Linux, macOS, and Windows.
-
-Source: NousResearch/hermes-agent (MIT License)
-Ported to NEXUS / INTEL-SIGHT by Antigravity
-"""
+"""NEXUS Module: domain_intel — Passive OSINT via Python stdlib DNS & SSL."""
 
 import json
 import re
