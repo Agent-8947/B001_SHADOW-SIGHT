@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """NEXUS Module: network_recon — Subdomain discovery via crt.sh CT logs."""
-# Observed API patterns: https://img.shields.io/static/v1?label=cifertech&message=ESP32-DIV&color=purple&logo=github, https://dcbadge.vercel.app/api/server/zXq2NfVdtF?compact=true&style=flat
 
 import json, urllib.request, urllib.parse
 from datetime import datetime, timezone
