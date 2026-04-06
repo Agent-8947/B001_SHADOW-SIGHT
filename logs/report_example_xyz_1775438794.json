@@ -1,0 +1,152 @@
+{
+  "breach_intel": {
+    "pwned": false,
+    "count": 0
+  },
+  "domain_intel": {
+    "total": 1,
+    "checks": [
+      "ssl",
+      "whois",
+      "dns",
+      "subdomains"
+    ],
+    "results": [
+      {
+        "domain": "example.xyz",
+        "ssl": {
+          "error": "[Errno 11001] getaddrinfo failed"
+        },
+        "whois": {
+          "domain": "example.xyz",
+          "whois_server": "whois.nic.xyz"
+        },
+        "dns": {
+          "domain": "example.xyz",
+          "records": {
+            "A": [],
+            "AAAA": [],
+            "MX": [],
+            "NS": [],
+            "TXT": [],
+            "CNAME": []
+          }
+        },
+        "subdomains": {
+          "domain": "example.xyz",
+          "count": 0,
+          "subdomains": []
+        }
+      }
+    ]
+  },
+  "endpoint_monitor": {
+    "total": 1,
+    "up": 0,
+    "down": 1,
+    "results": [
+      {
+        "url": "https://example.xyz",
+        "status": null,
+        "ok": false,
+        "latency_ms": null,
+        "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+      }
+    ]
+  },
+  "identity_profiler": {
+    "username": "example",
+    "checked": 15,
+    "found_count": 8,
+    "results": [
+      {
+        "platform": "GitHub",
+        "url": "https://github.com/example",
+        "found": true
+      },
+      {
+        "platform": "Instagram",
+        "url": "https://www.instagram.com/example",
+        "found": true
+      },
+      {
+        "platform": "Pinterest",
+        "url": "https://www.pinterest.com/example",
+        "found": true
+      },
+      {
+        "platform": "ProductHunt",
+        "url": "https://www.producthunt.com/@example",
+        "found": true
+      },
+      {
+        "platform": "Reddit",
+        "url": "https://www.reddit.com/user/example",
+        "found": true
+      },
+      {
+        "platform": "Telegram",
+        "url": "https://t.me/example",
+        "found": true
+      },
+      {
+        "platform": "TikTok",
+        "url": "https://www.tiktok.com/@example",
+        "found": true
+      },
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/@example",
+        "found": true
+      },
+      {
+        "platform": "Dev.to",
+        "url": "https://dev.to/example",
+        "found": false
+      },
+      {
+        "platform": "HackerNews",
+        "url": "https://news.ycombinator.com/user?id=example",
+        "found": false
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "https://www.linkedin.com/in/example",
+        "found": false
+      },
+      {
+        "platform": "Mastodon",
+        "url": "https://mastodon.social/@example",
+        "found": false
+      },
+      {
+        "platform": "Medium",
+        "url": "https://medium.com/@example",
+        "found": false
+      },
+      {
+        "platform": "Twitch",
+        "url": "https://www.twitch.tv/example",
+        "found": false
+      },
+      {
+        "platform": "Twitter",
+        "url": "https://twitter.com/example",
+        "found": false
+      }
+    ]
+  },
+  "network_recon": {
+    "domain": "example.xyz",
+    "count": 0,
+    "subdomains": []
+  },
+  "security_analyzer": {
+    "error": "Network unreachable or host offline",
+    "target": "example.xyz"
+  },
+  "web_crawler": {
+    "error": "<urlopen error [Errno 11001] getaddrinfo failed>",
+    "url": "https://example.xyz"
+  }
+}
