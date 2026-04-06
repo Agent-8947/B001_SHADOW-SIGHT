@@ -16,7 +16,6 @@ class ShadowSightCLI:
     def __init__(self):
         self.src_dir = Path(__file__).parent
         self.modules = {}
-        # Ensure we can import from src directory
         if str(self.src_dir) not in sys.path:
             sys.path.insert(0, str(self.src_dir))
         self._load_modules()
@@ -40,7 +39,7 @@ class ShadowSightCLI:
                         "title": title
                     }
             except Exception as e:
-                pass # Silent fail for broken modules, keep going with the working ones
+                pass
 
     def banner(self):
         print("\n" + "=" * 60)
@@ -69,7 +68,6 @@ class ShadowSightCLI:
                 print(f"    [!] Error during execution: {e}")
                 results[name] = {"error": str(e)}
                 
-        # Generate Report
         logs_dir = self.src_dir.parent / "logs"
         logs_dir.mkdir(exist_ok=True)
         report_path = logs_dir / f"report_{target.replace('.', '_')}_{int(datetime.now().timestamp())}.json"

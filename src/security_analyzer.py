@@ -35,6 +35,7 @@ SECURITY_HEADERS = {
 }
 
 def run(target: str) -> dict:
+    target = target.replace("https://", "").replace("http://", "").split("/")[0]  # Sockets need raw hostname
     headers = _http_headers(target)
     sec = {label: (header in headers) for header, label in SECURITY_HEADERS.items()}
     return {

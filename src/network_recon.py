@@ -5,6 +5,7 @@ import json, urllib.request, urllib.parse
 from datetime import datetime, timezone
 
 def run(domain: str, limit: int = 200) -> dict:
+    domain = domain.replace("https://", "").replace("http://", "").split("/")[0]
     url = f"https://crt.sh/?q=%25.{urllib.parse.quote(domain)}&output=json"
     req = urllib.request.Request(url, headers={"User-Agent": "nexus-recon/1.0", "Accept": "application/json"})
     try:

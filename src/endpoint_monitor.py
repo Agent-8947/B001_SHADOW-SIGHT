@@ -20,6 +20,8 @@ def _probe(url: str, timeout: float = 10.0) -> dict:
 
 def run(targets) -> dict:
     if isinstance(targets, str): targets = [targets]
+    # Normalize targets to proper URLs
+    targets = [t if t.startswith("http") else "https://" + t for t in targets]
     results = []
     with ThreadPoolExecutor(max_workers=min(len(targets), 20)) as ex:
         for f in as_completed({ex.submit(_probe, u): u for u in targets}):
