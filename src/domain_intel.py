@@ -155,7 +155,7 @@ WHOIS_SERVERS = {
 def whois_lookup(domain):
     """Query WHOIS servers for domain registration info."""
     parts = domain.split(".")
-    server = WHOIS_SERVERS.get(".".join(parts[-2:])) or WHOIS_SERVERS.get(parts[-1])
+    server = WHOIS_SERVERS.get(".".join(parts[-2:])) or WHOIS_SERVERS.get(parts[-1]) or f"whois.nic.{parts[-1]}"
     if not server:
         return {"error": f"No WHOIS server for .{parts[-1]}"}
 
@@ -387,6 +387,12 @@ def main():
 
     print(json.dumps(result, indent=2))
 
+
+def run(domain: str) -> dict:
+    """NEXUS CLI Adapter: Runs bulk OSINT checks across WHOIS, TLS, and DNS."""
+    if not domain: return {"error": "empty target"}
+    domain = domain.replace("https://", "").replace("http://", "").split("/")[0].split("@")[-1]
+    return bulk_check([domain], ["ssl", "whois", "dns", "subdomains"])
 
 if __name__ == "__main__":
     main()
