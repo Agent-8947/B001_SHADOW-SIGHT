@@ -1,6 +1,8 @@
 <div align="center">
 
-# Shadow Sight
+<img src="logo.png" width="300" alt="Shadow-Sight Logo">
+
+# Shadow-Sight
 
 **Seeing through the digital fog of war.**
 
