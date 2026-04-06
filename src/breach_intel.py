@@ -31,6 +31,7 @@ def check_email(email: str) -> dict:
         return {"email": email, "pwned": False, "count": 0} if e.code == 404 else {"error": str(e)}
 
 def run(target: str) -> dict:
+    if not target: return {"error": "empty target"}
     return check_email(target) if "@" in target else check_password(target)
 
 if __name__ == "__main__":

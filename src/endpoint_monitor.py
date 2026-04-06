@@ -19,9 +19,9 @@ def _probe(url: str, timeout: float = 10.0) -> dict:
         return {"url": url, "status": None, "ok": False, "latency_ms": None, "error": str(e)}
 
 def run(targets) -> dict:
+    if not targets: return {"error": "empty target"}
     if isinstance(targets, str): targets = [targets]
-    # Normalize targets to proper URLs
-    targets = [t if t.startswith("http") else "https://" + t for t in targets]
+    targets = [t if t.startswith("http") else "https://" + t.split("@")[-1] for t in targets]
     results = []
     with ThreadPoolExecutor(max_workers=min(len(targets), 20)) as ex:
         for f in as_completed({ex.submit(_probe, u): u for u in targets}):

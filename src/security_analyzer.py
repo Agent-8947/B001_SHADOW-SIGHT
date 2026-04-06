@@ -35,8 +35,10 @@ SECURITY_HEADERS = {
 }
 
 def run(target: str) -> dict:
-    target = target.replace("https://", "").replace("http://", "").split("/")[0]  # Sockets need raw hostname
+    if not target: return {"error": "empty target"}
+    target = target.replace("https://", "").replace("http://", "").split("/")[0].split("@")[-1]
     headers = _http_headers(target)
+    if not headers: return {"error": "Network unreachable or host offline", "target": target}
     sec = {label: (header in headers) for header, label in SECURITY_HEADERS.items()}
     return {
         "target": target, "module": "security_analyzer",

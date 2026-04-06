@@ -25,8 +25,9 @@ def _check(platform, url_tpl, username, timeout=5.0):
     return {"platform": platform, "url": url, "found": found}
 
 def run(username: str) -> dict:
-    # Cleanup input (if a domain or URL was passed by mistake)
+    if not username: return {"error": "empty target"}
     username = username.replace("https://", "").replace("http://", "").strip("/").split("/")[-1]
+    if "@" in username: username = username.split("@")[0]
     if "." in username: username = username.split(".")[0]
     results = []
     with ThreadPoolExecutor(max_workers=10) as ex:

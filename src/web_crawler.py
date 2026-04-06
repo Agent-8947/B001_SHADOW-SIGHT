@@ -1,35 +1,22 @@
 #!/usr/bin/env python3
-"""NEXUS Module: web_crawler — HTTP endpoint monitor with concurrent probing."""
-import urllib.request, urllib.error, json, time
-from datetime import datetime, timezone
-from concurrent.futures import ThreadPoolExecutor, as_completed
+"""NEXUS Module: web_crawler — Basic Web Crawler (Extracts Title & Links)."""
+import urllib.request, re, json
+from urllib.parse import urljoin
 
-def _probe(url: str, timeout: float = 10.0) -> dict:
-    start = time.perf_counter()
+def run(url: str) -> dict:
+    if not url: return {"error": "empty target"}
+    if not url.startswith("http"): url = "https://" + url.split("@")[-1]
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "nexus-monitor/1.0"})
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            ms = round((time.perf_counter() - start) * 1000, 1)
-            return {"url": url, "status": r.status, "ok": True, "latency_ms": ms,
-                    "checked_at": datetime.now(timezone.utc).isoformat()}
-    except urllib.error.HTTPError as e:
-        ms = round((time.perf_counter() - start) * 1000, 1)
-        return {"url": url, "status": e.code, "ok": e.code < 400, "latency_ms": ms, "error": str(e)}
+        req = urllib.request.Request(url, headers={"User-Agent": "nexus-crawler/1.0"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            html = r.read().decode("utf-8", errors="ignore")
+            title = re.search(r"<title>(.*?)</title>", html, re.IGNORECASE)
+            links = re.findall(r'href=["'](http[s]?://.*?)["']', html)
+            return {"url": url, "title": title.group(1) if title else "No title",
+                    "links_found": len(links), "unique_links": list(set(links))[:20]}
     except Exception as e:
-        return {"url": url, "status": None, "ok": False, "latency_ms": None, "error": str(e)}
-
-def run(targets) -> dict:
-    if isinstance(targets, str): targets = [targets]
-    # Normalize targets to proper URLs
-    targets = [t if t.startswith("http") else "https://" + t for t in targets]
-    results = []
-    with ThreadPoolExecutor(max_workers=min(len(targets), 20)) as ex:
-        for f in as_completed({ex.submit(_probe, u): u for u in targets}):
-            results.append(f.result())
-    up = sum(1 for r in results if r["ok"])
-    return {"total": len(results), "up": up, "down": len(results) - up, "results": results}
+        return {"error": str(e), "url": url}
 
 if __name__ == "__main__":
     import sys
-    targets = sys.argv[1:] if len(sys.argv) > 1 else ["https://example.com"]
-    print(json.dumps(run(targets), indent=2))
+    print(json.dumps(run(sys.argv[1] if len(sys.argv) > 1 else "example.com"), indent=2))
