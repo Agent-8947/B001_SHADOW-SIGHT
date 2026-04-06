@@ -29,6 +29,8 @@ def run(username: str) -> dict:
     username = username.replace("https://", "").replace("http://", "").strip("/").split("/")[-1]
     if "@" in username: username = username.split("@")[0]
     if "." in username: username = username.split(".")[0]
+    username = username.strip().replace(" ", "").lower()
+    if not username: return {"error": "empty target after cleanup"}
     results = []
     with ThreadPoolExecutor(max_workers=10) as ex:
         for f in as_completed({ex.submit(_check, p, u, username): p for p, u in PLATFORMS.items()}):
